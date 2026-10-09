@@ -26,9 +26,12 @@ jobs:
           node --check app/global-script.example.js
       - name: Build public configuration
         run: ruby build.rb
+      - name: Test both build modes
+        run: ruby test/build_test.rb
       - name: Check generated configuration
         run: |
           ruby -ryaml -e 'config = YAML.safe_load(File.read("dist/clash-verge.yaml")); abort "nodes must stay in the app" unless config.fetch("proxies") == []; abort "rules missing" if config.fetch("rules").empty?'
       - name: Check ignored local files
         run: |
           git check-ignore private/personal-rules.yaml dist/clash-verge.yaml rulesets/history/old.yaml
+          test -z "$(git ls-files private dist rulesets/history)"

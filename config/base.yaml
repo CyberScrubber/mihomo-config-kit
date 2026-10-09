@@ -1,4 +1,4 @@
-# Clash Verge Rev / Mihomo 的本地主配置。节点由 App 的全局扩展脚本注入。
+# Mihomo 双节点示例策略。节点由 App 注入，或由 build.rb 从本地节点文件写入。
 mixed-port: 7890
 allow-lan: false
 mode: rule

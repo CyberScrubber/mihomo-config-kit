@@ -1,0 +1,31 @@
+# 复制到 private/nodes.yaml 后填入自己的节点参数。不要提交填好的文件。
+# name 必须和 config/base.yaml 中策略组引用的节点名称完全一致。
+proxies:
+  - name: '🌵 US-Phoenix'
+    type: vless
+    server: REPLACE_PHOENIX_SERVER
+    port: 443
+    uuid: REPLACE_PHOENIX_UUID
+    network: tcp
+    tls: true
+    udp: true
+    client-fingerprint: chrome
+    servername: REPLACE_PHOENIX_SNI
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: REPLACE_PHOENIX_PUBLIC_KEY
+      short-id: REPLACE_PHOENIX_SHORT_ID
+  - name: '🌴 US-LosAngeles'
+    type: vless
+    server: REPLACE_LA_SERVER
+    port: 443
+    uuid: REPLACE_LA_UUID
+    network: tcp
+    tls: true
+    udp: true
+    client-fingerprint: chrome
+    servername: REPLACE_LA_SNI
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: REPLACE_LA_PUBLIC_KEY
+      short-id: REPLACE_LA_SHORT_ID
