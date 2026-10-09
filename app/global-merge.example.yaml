@@ -1,0 +1,32 @@
+# 仅在 App 中只使用这一份个人配置时，才用「全局扩展覆写配置」粘贴此模板。
+# 全局覆写会把所有配置的 proxies 列表替换成下面两台节点。
+# 不要同时启用本覆写与 app/global-script.example.js。
+proxies:
+  - name: '🌵 US-Phoenix'
+    type: vless
+    server: REPLACE_PHOENIX_SERVER
+    port: 443
+    uuid: REPLACE_PHOENIX_UUID
+    network: tcp
+    tls: true
+    udp: true
+    client-fingerprint: chrome
+    servername: REPLACE_PHOENIX_SNI
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: REPLACE_PHOENIX_PUBLIC_KEY
+      short-id: REPLACE_PHOENIX_SHORT_ID
+  - name: '🌴 US-LosAngeles'
+    type: vless
+    server: REPLACE_LA_SERVER
+    port: 443
+    uuid: REPLACE_LA_UUID
+    network: tcp
+    tls: true
+    udp: true
+    client-fingerprint: chrome
+    servername: REPLACE_LA_SNI
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: REPLACE_LA_PUBLIC_KEY
+      short-id: REPLACE_LA_SHORT_ID

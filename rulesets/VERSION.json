@@ -1,0 +1,16 @@
+{
+  "source": "https://github.com/blackmatrix7/ios_rule_script",
+  "commit": "036c097eb26c6a52c4f04ebcb6633043cb942669",
+  "synced_on": "2026-10-09",
+  "sha256": {
+    "Claude": "ef21df39005b17dbd84aa65a47162b36fb5e72754cd32384146474ed488df482",
+    "OpenAI": "cf66c50e7cfbe0aa0e9e249bfa8897d152ae35b38ab6db2936ef62860b7b61b4",
+    "Google": "dfb4bf0a0095e48f024fbb7c31564a928e6c7d450b662aca9803119489a9237c",
+    "Spotify": "e74599390a87e5ed6da929f80be9c173cf3017e41b8f69362c2028d248875a79",
+    "ChinaMaxNoIP": "833a82c68b2ae1ee8c7136c6c1f2bd6c125e436ecadcf54d661128f1b197d203",
+    "YouTube": "2f84cc9d35c8559ebea4c43aa9b30bb43b36313d70684f23a359f1acabb879bb",
+    "Apple": "629a8b2dd57c2b380c57ca71f65c25696369616c3820587ee7bb4151a1d42896",
+    "Steam": "585e423c866bb020421a79dd2842f279b56ef94bf487fbee13354796958dcad6",
+    "Netflix": "82962baecece6de61b21e7eb51cb4c4f14f33d5023611ad63e885b24740bb721"
+  }
+}

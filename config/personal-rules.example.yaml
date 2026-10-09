@@ -1,0 +1,4 @@
+# 若不想使用从旧脚本迁移的规则，可用此文件替换 private/personal-rules.yaml。
+rules:
+  # - DOMAIN-SUFFIX,example.com,PROXY
+  # - DOMAIN-SUFFIX,example.cn,DIRECT

@@ -1,0 +1,112 @@
+# Clash Verge Rev / Mihomo 的本地主配置。节点由 App 的全局扩展脚本注入。
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: warning
+ipv6: false
+
+proxies: []
+
+proxy-groups:
+  - name: '🚀 默认代理'
+    type: select
+    proxies: ['🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口', DIRECT]
+  - name: '🇺🇸 美国自动'
+    type: url-test
+    proxies: ['🌵 US-Phoenix', '🌴 US-LosAngeles']
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+  - name: '🌵 凤凰城出口'
+    type: select
+    proxies: ['🌵 US-Phoenix']
+  - name: '🌴 洛杉矶出口'
+    type: select
+    proxies: ['🌴 US-LosAngeles']
+  - name: '📺 YouTube'
+    type: select
+    proxies: ['🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口', DIRECT]
+  - name: '🤖 ChatGPT'
+    type: select
+    proxies: ['🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口']
+  - name: '🍎 Apple'
+    type: select
+    proxies: [DIRECT, '🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口']
+  - name: '🎮 Steam'
+    type: select
+    proxies: [DIRECT, '🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口']
+  - name: '🎬 Netflix'
+    type: select
+    proxies: ['🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口']
+  - name: '⚡ Grok'
+    type: select
+    proxies: ['🌵 凤凰城出口', '🇺🇸 美国自动', '🌴 洛杉矶出口']
+  - name: '🧠 Claude'
+    type: select
+    proxies: ['🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口']
+  - name: '🔎 Google'
+    type: select
+    proxies: ['🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口']
+  - name: '🎵 Spotify'
+    type: select
+    proxies: ['🇺🇸 美国自动', '🌵 凤凰城出口', '🌴 洛杉矶出口', DIRECT]
+
+# build.rb 会把 rulesets/ 的固定版本填到这些内联规则集中。
+rule-providers:
+  YouTube:
+    type: inline
+    behavior: classical
+    payload: []
+  Apple:
+    type: inline
+    behavior: classical
+    payload: []
+  Steam:
+    type: inline
+    behavior: classical
+    payload: []
+  Netflix:
+    type: inline
+    behavior: classical
+    payload: []
+  Claude:
+    type: inline
+    behavior: classical
+    payload: []
+  OpenAI:
+    type: inline
+    behavior: classical
+    payload: []
+  Google:
+    type: inline
+    behavior: classical
+    payload: []
+  Spotify:
+    type: inline
+    behavior: classical
+    payload: []
+  ChinaMaxNoIP:
+    type: inline
+    behavior: classical
+    payload: []
+
+# build.rb 会把 private/personal-rules.yaml 中的规则插在最前面。
+rules:
+  - DOMAIN-SUFFIX,localhost,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - RULE-SET,YouTube,📺 YouTube
+  - RULE-SET,OpenAI,🤖 ChatGPT
+  - DOMAIN-SUFFIX,grok.com,⚡ Grok
+  - DOMAIN-SUFFIX,x.ai,⚡ Grok
+  - RULE-SET,Claude,🧠 Claude
+  - RULE-SET,Apple,🍎 Apple
+  - RULE-SET,Steam,🎮 Steam
+  - RULE-SET,Netflix,🎬 Netflix
+  - RULE-SET,Spotify,🎵 Spotify
+  - RULE-SET,Google,🔎 Google
+  - RULE-SET,ChinaMaxNoIP,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀 默认代理

@@ -1,0 +1,34 @@
+name: Validate configuration
+
+permissions:
+  contents: read
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check script syntax
+        run: |
+          ruby -c build.rb
+          ruby -c update_rules.rb
+          node --check app/global-script.example.js
+      - name: Build public configuration
+        run: ruby build.rb
+      - name: Check generated configuration
+        run: |
+          ruby -ryaml -e 'config = YAML.safe_load(File.read("dist/clash-verge.yaml")); abort "nodes must stay in the app" unless config.fetch("proxies") == []; abort "rules missing" if config.fetch("rules").empty?'
+      - name: Check ignored local files
+        run: |
+          git check-ignore private/personal-rules.yaml dist/clash-verge.yaml rulesets/history/old.yaml
